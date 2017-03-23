@@ -3,27 +3,52 @@
 //Do not change any of the function names
 
 function multiplyArguments() {
+	var total = arguments[0];
+	if (arguments.length === 1) {
+		return arguments[0];
+	} else if (arguments.length === 0) {
+		return 0;
+	} else {
+		for (var i = 1; i < arguments.length; i++) {
+		total *= arguments[i];
+		}
+		return total;
+	}
 	//use the arguments keyword to multiply all of the arguments together and return the product
 	//if no arguments are passed in return 0
 	//if one argument is passed in just return it
 }
 
 function invokeCallback(cb) {
+	cb();
 	//invoke cb
 }
 
 function sumArray(numbers, cb) {
+	var sum = numbers.reduce(function(acc, val){
+		return acc + val;
+	});
+	cb(sum);
+
 	//sum up all of the integers in the numbers array
 	//pass the result to cb
 	//no return is necessary
 }
 
 function forEach(arr, cb) {
+	arr.forEach(function(x) {
+		cb(x);
+	});
 	//iterate over arr and pass its values to cb one by one
 	//hint: you will be invoking cb multiple times (once for each value in the array)
 }
 
 function map(arr, cb) {
+	var newArr = arr.map(function(x) {
+		return cb(x);
+
+	});return newArr;
+	
 	//create a new array
 	//iterate over each value in arr, pass it to cb, then place the value returned from cb into the new arr
 	//the new array should be the same length as the array argument
