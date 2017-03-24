@@ -55,6 +55,17 @@ function map(arr, cb) {
 }
 
 function getUserConstructor() {
+	function User(options) {
+		this.username = options.username;
+		this.name = options.name;
+		this.email = options.email;
+		this.password = options.password;
+		this.sayHi = function() {
+			return 'Hello, my name is' + this.name;
+		};
+	}
+	
+	return User;
 	//create a constructor called User
 	//it should accept an options object with username, name, email, and password properties
 	//in the constructor set the username, name, email, and password properties
@@ -64,11 +75,23 @@ function getUserConstructor() {
 }
 
 function addPrototypeMethod(Constructor) {
+	Constructor.prototype.sayHi = function() {
+		return 'Hello World!';
+	};
 	//add a method to the constructor's prototype
 	//the method should be called 'sayHi' and should return the string 'Hello World!'
 }
 
 function addReverseString() {
+	String.prototype.reverse = function() {
+		var array = [];
+		array= this.split('');
+		var newArray = [];
+		newArray = array.reverse();
+		var joinedString = '';
+		joinedString = newArray.join('');
+		return joinedString;
+};
 	//add a method to the string constructor's prototype that returns a reversed copy of the string
 	//name this method reverse
 	//hint:
@@ -76,6 +99,8 @@ function addReverseString() {
 }
 
 function nFactorial(n) {
+	if (n < 2) return 1;
+	return n * nFactorial(n - 1);
 	//return the factorial for n
 	//solve this recursively
 	//example:
